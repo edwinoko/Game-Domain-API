@@ -39,3 +39,11 @@ This project is basically a game api generator. I will be creating smash bros ap
     - Keep Away
     - Stage Control
     - Tag Team
+
+    Interesting sites that i can use to build this up
+    https://github.com/leocabeza/smashbros-unofficial-api/commit/71cbcf8e2dac10a046654dc0f231e64f3572dd8c
+    https://ultimateframedata.com/
+
+    https://fastapi.tiangolo.com/tutorial/sql-databases/
+    -> CRUD utils
+
