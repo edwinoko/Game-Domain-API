@@ -46,4 +46,6 @@ This project is basically a game api generator. I will be creating smash bros ap
 
     https://fastapi.tiangolo.com/tutorial/sql-databases/
     -> CRUD utils
+    https://www.youtube.com/watch?v=yD_oDTeObJY&ab_channel=BugBytes
+    -> explanation for pydantic models and constraints
 

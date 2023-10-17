@@ -26,7 +26,7 @@ class Move(BaseModel):
     id: int
     move_name: str
     move_alias: str
-    game_id: int
+    character_id: int
     move_duration_frames: int
     active_frame: int
     end_active_frame: int

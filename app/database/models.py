@@ -27,7 +27,7 @@ class Move(Base):
     id = Column(Integer, primary_key=True, index=True)
     move_name = Column(String)
     move_alias = Column(String)
-    game_id = Column(Integer, ForeignKey("character.id"))
+    character_id = Column(Integer, ForeignKey("character.id"))
     move_duration_frames = Column(Integer)
     startup_frame = Column(Integer)
     active_frame = Column(Integer)
