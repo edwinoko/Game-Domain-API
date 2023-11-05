@@ -43,6 +43,5 @@ class Archetype(Base):
     __tablename__ = "archetype"
 
     id = Column(Integer, primary_key=True, index=True)
-    game_name = Column(String, unique=True, index=True)
-    release_date = Column(DateTime)
-    information = Column(String)
+    archetype_name = Column(String, unique=True, index=True)
+    description = Column(String)

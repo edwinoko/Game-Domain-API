@@ -1,11 +1,11 @@
-from typing import Union
+import uuid
 from datetime import datetime
 from pydantic import BaseModel
 
-
 class Game(BaseModel):
-    id: int
-    release_date = datetime
+    id: int | uuid.UUID
+    title: str
+    release_date = datetime.date
     information: str
 
     class Config:
@@ -42,9 +42,8 @@ class Move(BaseModel):
 
 class Archetype(BaseModel):
     id: int
-    game_name: str
-    release_date: datetime
-    information: str
+    archetype_name: str
+    description: str
 
     class Config:
         orm_mode = True
