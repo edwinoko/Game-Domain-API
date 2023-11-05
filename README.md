@@ -49,3 +49,7 @@ This project is basically a game api generator. I will be creating smash bros ap
     https://www.youtube.com/watch?v=yD_oDTeObJY&ab_channel=BugBytes
     -> explanation for pydantic models and constraints
 
+Setup
+
+install the requirements and run 
+uvicorn app.main:app --reload                                                                                                                                                                                                                           
