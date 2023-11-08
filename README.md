@@ -1,5 +1,5 @@
 # Game-Domain-API
-This project is basically a game api generator. I will be creating smash bros api but also create scripts to have similar things built for other fighting games. This will then be used by the UFGP to generate the site and more.
+This project is basically a fighting game API. I will be creating smash bros api but also create scripts to have similar things built for other fighting games. This will then be used by the UFGP to generate the site and more.
     
 - Characters
     - Name
@@ -40,13 +40,13 @@ This project is basically a game api generator. I will be creating smash bros ap
     - Stage Control
     - Tag Team
 
-    Interesting sites that i can use to build this up
-    https://github.com/leocabeza/smashbros-unofficial-api/commit/71cbcf8e2dac10a046654dc0f231e64f3572dd8c
+    Interesting sites 
+    - https://github.com/leocabeza/smashbros-unofficial-api/commit/71cbcf8e2dac10a046654dc0f231e64f3572dd8c
     https://ultimateframedata.com/
 
-    https://fastapi.tiangolo.com/tutorial/sql-databases/
+    - https://fastapi.tiangolo.com/tutorial/sql-databases/
     -> CRUD utils
-    https://www.youtube.com/watch?v=yD_oDTeObJY&ab_channel=BugBytes
+    - https://www.youtube.com/watch?v=yD_oDTeObJY&ab_channel=BugBytes
     -> explanation for pydantic models and constraints
 
 Setup

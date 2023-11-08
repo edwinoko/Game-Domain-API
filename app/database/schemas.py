@@ -26,21 +26,21 @@ class Move(BaseModel):
     id: int
     move_name: str
     move_alias: list[str]
-    startup_frames: int 
-    landing_lag_frames: int
+    startup_frames: str 
+    landing_lag_frames: str
     character_id: int
-    total_frames: int
-    active_frame: int
-    end_active_frame: int
-    recovery_frames: int
-    start_invincibility_frame: int
-    end_invincibility_frame: int
+    total_frames: str
+    active_frame: str
+    end_active_frame: str
+    recovery_frames: str
+    start_invincibility_frame: str
+    end_invincibility_frame: str
     move_gif_link: str
     move_input: str
-    damage: int
+    damage: str
     notes: str 
-    shield_lag: int # how quickly the user can shield after landing a hit on shield
-    shield_stun: int # how quickly the opponent can letgo of shield after getting hit
+    shield_lag: str # how quickly the user can shield after landing a hit on shield
+    shield_stun: str # how quickly the opponent can letgo of shield after getting hit
     extra_information: str
 
     class Config:

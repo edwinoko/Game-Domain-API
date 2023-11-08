@@ -1,12 +1,15 @@
 from fastapi import Depends, FastAPI
-
-from .database.setup import engine, Base
 from .routers import archetypes, games, moves, characters
+from .database.populate_database  import populate_database
+import logging
 
-Base.metadata.create_all(bind=engine)
+logger = logging.getLogger("uvicorn.info")
 
 app = FastAPI()
 
+logger.info("Populating the database....")
+status = populate_database()
+logger.info(status)
 
 #app.include_router(archetypes.router, prefix="/archetypes")
 app.include_router(games.router, prefix="/games")
