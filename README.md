@@ -1,6 +1,6 @@
 # Game-Domain-API
-This project is basically a fighting game API. I will be creating smash bros api but also create scripts to have similar things built for other fighting games. This will then be used by the UFGP to generate the site and more.
-    
+This project is basically a fighting game API. I will be creating smash bros api but also create scripts to have similar things built for other fighting games. This will then be used by the UFGP to generate the site and more. The database of the api is based on this layout but has a bit more then what is displayed here.
+
 - Characters
     - Name
     - Game name
@@ -40,16 +40,10 @@ This project is basically a fighting game API. I will be creating smash bros api
     - Stage Control
     - Tag Team
 
-    Interesting sites 
-    - https://github.com/leocabeza/smashbros-unofficial-api/commit/71cbcf8e2dac10a046654dc0f231e64f3572dd8c
-    https://ultimateframedata.com/
-
-    - https://fastapi.tiangolo.com/tutorial/sql-databases/
-    -> CRUD utils
-    - https://www.youtube.com/watch?v=yD_oDTeObJY&ab_channel=BugBytes
-    -> explanation for pydantic models and constraints
-
 Setup
 
 install the requirements and run 
-uvicorn app.main:app --reload                                                                                                                                                                                                                           
+uvicorn app.main:app --reload
+
+In the browser you can go to the swagger page to test it out
+http://127.0.0.1:8000/docs#/

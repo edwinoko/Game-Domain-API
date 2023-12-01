@@ -13,6 +13,8 @@ class Game(Base):
 
     character = relationship("Character", back_populates="games")
 
+# Combination of game ID and name should be the unique  constraint. Still need to figure out how to fix this
+
 class Character(Base):
     __tablename__ = "character"
 
@@ -56,7 +58,7 @@ class Archetype(Base):
     __tablename__ = "archetype"
 
     id = Column(Integer, primary_key=True, index=True)
-    archetype_name = Column(String, unique=True, index=True)
+    name = Column(String, unique=True, index=True)
     description = Column(String)
 
     character = relationship("Character", back_populates="archetypes")

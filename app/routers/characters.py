@@ -1,19 +1,18 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
-from ..database import crud, models, schemas, setup
+ 
+from ..database import crud, setup
 
 get_db = setup.get_db
 
 router = APIRouter()
 
+@router.get("/")
+async def get_all_characters(db: Session = Depends(get_db)):
+    characters = crud.get_characters(db)
+    return characters
 
-@router.get("/games/", response_model=schemas.Game)
-async def get_all_games(db: Session = Depends(get_db)):
-    
-    pass
-
-@router.get("/game/{id}", response_model=schemas.Game)
-async def get_game(id: int, db: Session = Depends(get_db)):
-    
-    pass
+@router.get("/{id}")
+async def get_character(id: int, db: Session = Depends(get_db)):
+    character = crud.get_character_by_id(db,id)
+    return character

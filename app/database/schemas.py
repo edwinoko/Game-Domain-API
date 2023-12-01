@@ -1,5 +1,8 @@
+from __future__ import annotations
 from datetime import date
 from pydantic import BaseModel
+from typing import List
+
 
 class Game(BaseModel):
 
@@ -7,17 +10,17 @@ class Game(BaseModel):
     title: str
     release_date: date
     information: str
+    characters: List[Character] = None
+   
 
     class Config:
        from_attributes = True
 
-class Character(BaseModel):
+class Archetype(BaseModel):
     id: int
-    game_id: int
-    archetype_id: int
     name: str
-    release_date: date
-    information: str
+    description: str
+    characters: List[Character] = None
 
     class Config:
         from_attributes = True
@@ -42,15 +45,21 @@ class Move(BaseModel):
     shield_lag: str # how quickly the user can shield after landing a hit on shield
     shield_stun: str # how quickly the opponent can letgo of shield after getting hit
     extra_information: str
+    characters: List[Character] = None
 
     class Config:
         from_attributes = True
 
-
-class Archetype(BaseModel):
+class Character(BaseModel):
     id: int
-    archetype_name: str
-    description: str
+    game_id: int
+    archetype_id: int
+    name: str
+    release_date: date
+    information: str
+    games: List[Game] = None
+    archetypes: List[Archetype] = None
+    moves :  List[Move] = None
 
     class Config:
         from_attributes = True

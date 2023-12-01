@@ -12,7 +12,8 @@ import random
 logger = logging.getLogger("uvicorn.info")
 data_files = os.path.join(os.getcwd(),"data/smash_character_data")
 archetype_file = os.path.join(os.getcwd(), "data/archetypes")
-
+move_file = os.path.join(os.getcwd(),"data/moves")
+movelist = set()
 
 db_gen = get_db()
 db = next(db_gen)
@@ -36,7 +37,8 @@ def populate_database():
         logger.info("Inserting characters and moves...")
         logger.info(setup_characters_and_moves(title))
 
-
+    write_moves = open(move_file, "a")
+    write_moves.write(str(movelist))
     return "Database has been populated..."
 
 def setup_titles(game_info):
@@ -57,7 +59,7 @@ def setup_archetype():
     for archetype in archetypes.readlines():
         if len(str(archetype)) > 4:
             new_archetype = Archetype(
-                archetype_name = archetype,
+                name = archetype,
                 description = "Still need to do this"
                 )
 
@@ -95,17 +97,11 @@ def setup_characters_and_moves(title):
 
 def setup_moves(file, character):
     character_move_file = open(os.path.join(data_files, file))
-    try:
-        character_moves = json.load(character_move_file)
-    except json.decoder.JSONDecodeError:
-        import pdb; pdb.set_trace()
-
-        
-    #get character id
+    character_moves = json.load(character_move_file)
     character_data= get_character_by_name(db, character)
-    
+
     for move in character_moves["moves"]:
-        #move.keys
+        movelist.add(move)
         new_moves = Move(
                 move_name = character_moves["moves"][move]["movename"],
                 move_alias = character_moves["moves"][move]["movename"],
@@ -128,5 +124,10 @@ def setup_moves(file, character):
         )
         db.add(new_moves)
         db.commit()
+    
 
     return "Added moves of "+character+ " to the database..."
+
+#def  move_input_translator(move):
+
+#    moves
