@@ -29,7 +29,7 @@ def get_character_by_archetype(db: Session, archetype_id: int):
 
 # MOVES
 def get_all_moves(db: Session, character_id: int ,skip: int = 0, limit: int = 100):
-    return db.query(Move).offset(skip).limit(limit).filter(Move.character_id == character_id)
+    return db.query(Move).filter(Move.character_id == character_id).offset(skip).limit(limit)
 
 def get_move(db: Session, move_id: int):
     return db.query(Move).filter(Move.id == move_id).first()

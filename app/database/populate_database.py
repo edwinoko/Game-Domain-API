@@ -115,7 +115,7 @@ def setup_moves(file, character):
                 start_invincibility_frame = character_moves["moves"][move]["totalframes"], #needs to be fixed
                 end_invincibility_frame = character_moves["moves"][move]["totalframes"],#needs to be fixed
                 move_gif_link = character_moves["moves"][move]["hitbox"],
-                move_input = character_moves["moves"][move]["totalframes"], #needsto be fixed
+                move_input = character_moves["moves"][move]["totalframes"], #needs to be fixed
                 damage = character_moves["moves"][move]["basedamage"],
                 notes = character_moves["moves"][move]["notes"],
                 shield_lag = character_moves["moves"][move]["shieldlag"],
@@ -127,7 +127,3 @@ def setup_moves(file, character):
     
 
     return "Added moves of "+character+ " to the database..."
-
-#def  move_input_translator(move):
-
-#    moves
