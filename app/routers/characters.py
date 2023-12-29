@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.get("/")
 async def get_all_characters(db: Session = Depends(get_db)):
-    characters = crud.get_characters(db)
+    characters = crud.get_all_characters(db)
     return characters
 
 @router.get("/{id}")
