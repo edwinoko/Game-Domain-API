@@ -1,11 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ..database.models import Game, Archetype, Move, Character
- 
 from ..database import crud, setup
 
 get_db = setup.get_db
-
 router = APIRouter()
 
 @router.get("/")

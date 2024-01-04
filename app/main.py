@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from .routers import archetypes, games, moves, characters
 from .database.populate_database  import populate_database
 import logging
