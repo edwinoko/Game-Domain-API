@@ -51,6 +51,7 @@ class Move(Base):
     shield_lag = Column(String)
     shield_stun = Column(String)
     extra_information = Column(String)
+    cancellable = Column(String)
 
     character = relationship("Character", back_populates="moves")
 

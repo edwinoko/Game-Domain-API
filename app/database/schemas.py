@@ -11,7 +11,6 @@ class Game(BaseModel):
     release_date: date
     information: str
     characters: List[Character] = None
-   
 
     class Config:
        from_attributes = True
@@ -43,7 +42,7 @@ class Move(BaseModel):
     damage: str
     notes: str 
     shield_lag: str # how quickly the user can shield after landing a hit on shield
-    shield_stun: str # how quickly the opponent can letgo of shield after getting hit
+    shield_stun: str # how quickly the opponent can let go of shield after getting hit
     extra_information: str
     characters: List[Character] = None
 
