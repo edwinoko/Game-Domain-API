@@ -26,8 +26,8 @@ class Archetype(BaseModel):
 
 class Move(BaseModel):
     id: int
-    move_name: str
-    move_alias: list[str]
+    name: str
+    alias: list[str]
     startup_frames: str 
     landing_lag_frames: str
     character_id: int
@@ -37,8 +37,8 @@ class Move(BaseModel):
     recovery_frames: str
     start_invincibility_frame: str
     end_invincibility_frame: str
-    move_gif_link: str
-    move_input: str
+    gif_link: str
+    command_input: str
     damage: str
     notes: str 
     shield_lag: str # how quickly the user can shield after landing a hit on shield

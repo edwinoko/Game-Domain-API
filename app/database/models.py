@@ -13,7 +13,7 @@ class Game(Base):
 
     character = relationship("Character", back_populates="games")
 
-# Combination of game ID and name should be the unique  constraint. Still need to figure out how to fix this
+# TODO: Combination of game ID and name should be the unique constraint.
 
 class Character(Base):
     __tablename__ = "character"
@@ -33,19 +33,19 @@ class Move(Base):
     __tablename__ = "move"
 
     id = Column(Integer, primary_key=True, index=True)
-    move_name = Column(String)
-    move_alias = Column(String)
+    name = Column(String)
+    alias = Column(String)
     startup_frames = Column(String)
     landing_lag_frames = Column(String)
     character_id = Column(Integer, ForeignKey("character.id"))
-    move_duration_frames = Column(String)
+    duration_frames = Column(String)
     active_frame = Column(String)
     end_active_frame = Column(String)
     recovery_frames = Column(String)
     start_invincibility_frame = Column(String)
     end_invincibility_frame = Column(String)
-    move_gif_link = Column(String)
-    move_input = Column(String)
+    gif_link = Column(String)
+    command_input = Column(String)
     damage = Column(String)
     notes = Column(String)
     shield_lag = Column(String)

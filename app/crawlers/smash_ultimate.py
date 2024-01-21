@@ -117,19 +117,19 @@ def setup_moves(file, character):
 
     for move in character_moves["moves"]:
         new_moves = Move(
-                move_name = character_moves["moves"][move]["movename"],
-                move_alias = character_moves["moves"][move]["movename"],
+                name = character_moves["moves"][move]["movename"],
+                alias = character_moves["moves"][move]["movename"],
                 startup_frames = character_moves["moves"][move]["startup"],
                 landing_lag_frames = character_moves["moves"][move]["landinglag"],
                 character_id = character_data.id,
-                move_duration_frames = character_moves["moves"][move]["totalframes"],
+                duration_frames = character_moves["moves"][move]["totalframes"],
                 active_frame = character_moves["moves"][move]["activeframes"],
                 end_active_frame = character_moves["moves"][move]["activeframes"], #fix that in data files
                 recovery_frames = character_moves["moves"][move]["totalframes"], #needs  to be fixed
                 start_invincibility_frame = character_moves["moves"][move]["totalframes"], #needs to be fixed
                 end_invincibility_frame = character_moves["moves"][move]["totalframes"],#needs to be fixed
-                move_gif_link = character_moves["moves"][move]["hitbox"],
-                move_input = character_moves["moves"][move]["totalframes"], #needs to be fixed
+                gif_link = character_moves["moves"][move]["hitbox"],
+                command_input = character_moves["moves"][move]["totalframes"], #needs to be fixed
                 damage = character_moves["moves"][move]["basedamage"],
                 notes = character_moves["moves"][move]["notes"],
                 shield_lag = character_moves["moves"][move]["shieldlag"],

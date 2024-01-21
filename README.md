@@ -8,3 +8,16 @@ uvicorn app.main:app --reload
 
 In the browser you can go to the swagger page to test it out
 http://127.0.0.1:8000/docs#/
+
+
+## Fighting Game Data Folder Setup
+
+For the setup of the game domain there needs to be some structure in which data is collected and stored. The setup should be something similar to the following
+
+Data
+- Archetypes
+- Games
+    - Game franchise e.g. Smash Bros Ultimate
+        - Character file e.g. Falco.json
+
+##
