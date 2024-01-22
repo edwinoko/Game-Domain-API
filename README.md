@@ -20,4 +20,33 @@ Data
     - Game franchise e.g. Smash Bros Ultimate
         - Character file e.g. Falco.json
 
-##
+## Template for the Character file
+
+{   "name": "Fox"
+    "archetype": "['Rushdown']"
+    "url": "/fox",
+    "release_date": "2022-09-19 15:00:39.415696",
+    "summary": "Is a Fox in space and he has a bird best friend. Irony much?"
+    "moves": {
+        "jab_1": {
+            "name" = Column(String)
+            "alias" = Column(String)
+            "startup_frames" = Column(String)
+            "landing_lag" = Column(String)
+            "duration" = Column(String)
+            "active_frame" = Column(String)
+            "end_active_frame" = Column(String)
+            "recovery_frames" = Column(String)
+            "start_invincibility_frame" = Column(String)
+            "end_invincibility_frame" = Column(String)
+            "gif_link" = Column(String)
+            "command_input" = Column(String)
+            "base_damage" = 
+            "notes" = Column(String)
+            "shield_lag" = Column(String)
+            "shield_stun" = Column(String)
+            "extra_information" = Column(String)
+            "cancellable" = Column(String)
+        }
+    }
+}
