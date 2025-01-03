@@ -1,7 +1,9 @@
 from ..database.models import Game, Character, Archetype, Move
 from ..database.setup import get_db, SQLALCHEMY_DATABASE_URL, engine, Base
 from sqlalchemy_utils import database_exists, create_database
-from ..database.crud import get_game_by_name, get_all_archetypes, get_character_by_name
+from ..crud_ops.game import get_game_by_name
+from ..crud_ops.archetype import get_all_archetypes
+from ..crud_ops.character import get_character_by_name
 
 import logging
 import os
@@ -17,9 +19,11 @@ data_files = os.path.join(os.getcwd(),"data/smash_character_data")
 archetype_file = os.path.join(os.getcwd(), "data/archetypes")
 move_file = os.path.join(os.getcwd(),"data/moves")
 
+
 # Ensuring that the database is available and can be written to
 db_gen = get_db()
 db = next(db_gen)
+
 
 def populate_smash_database():
     
@@ -64,8 +68,6 @@ def setup_titles(game_info):
 
     db.add(game_title)
     db.commit()
-    
-    import pdb; pdb.set_trace()
 
     return game_info["title"] + " has been added to the database..."
 
