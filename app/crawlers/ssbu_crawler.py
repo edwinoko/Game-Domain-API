@@ -40,6 +40,11 @@ def get_data():
     # check if the date file exist if not create it.
     cwd = str(Path.cwd())
     raw_datefile = cwd+'/data/rawdatefile'
+
+    # check whether the character file exists
+    if not path.exists(cwd+'/data'):
+        makedirs(cwd+'/data')
+
     if  not path.exists(raw_datefile):
         with open(raw_datefile,'w+') as char_file:
             char_file.write(str(datetime.now()))

@@ -11,9 +11,13 @@ def get_game_by_name(db: Session, title: str):
     return db.query(Game).filter(Game.title == title).first()
 
 def create_game(db: Session, game):
+    db.session.add(game)
+    db.session.commit()
     return f'Game {game.title} has been created'
 
 def delete_game(db: Session, game):
+    db.session.delete(game)
+    db.session.commit()
     return f'Game {game.title} has been deleted'
 
 def update_game(db: Session, old_game, new_game):

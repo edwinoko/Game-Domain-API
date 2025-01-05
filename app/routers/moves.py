@@ -20,17 +20,17 @@ async def get_all_moves(name: str, db: Session = Depends(get_db)):
     moves = get_all_moves(db, character.id)
     return moves
 
-# @router.post("/new")
-# async def create_moves(db: Session, move: Move):
-#     move_state =  create_move(db, move)
-#     return move_state
+@router.post("/new")
+async def create_moves(move: Move, db: Session = Depends(get_db)):
+    move_state =  create_move(db, move)
+    return move_state
 
-# @router.delete("/delete")
-# async def delete_moves(db: Session, move: Move):
-#     move_state =  delete_move(db, move)
-#     return move_state
+@router.delete("/delete")
+async def delete_moves(move: Move, db: Session = Depends(get_db)):
+    move_state =  delete_move(db, move)
+    return move_state
 
-# @router.put("/update")
-# async def update_moves(db: Session, old_move: Move, new_move: Move):
-#     move_state =  update_move(db, old_move, new_move)
-#     return move_state
+@router.put("/update")
+async def update_moves(old_move: Move, new_move: Move, db: Session = Depends(get_db)):
+    move_state =  update_move(db, old_move, new_move)
+    return move_state
