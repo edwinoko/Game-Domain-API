@@ -4,6 +4,7 @@ from sqlalchemy_utils import database_exists, create_database
 from ..crud_ops.game import get_game_by_name
 from ..crud_ops.archetype import get_all_archetypes
 from ..crud_ops.character import get_character_by_name
+from .ssbu_crawler import get_data
 
 import logging
 import os
@@ -37,6 +38,8 @@ def populate_smash_database():
     if not database_exists(SQLALCHEMY_DATABASE_URL):
         create_database(SQLALCHEMY_DATABASE_URL)
         Base.metadata.create_all(bind=engine)
+        # quick fix to add the character files to the environment
+        x=get_data()
 
         # Setting up the basic information for the database
         title = "Super Smash Bros Ultimate"
