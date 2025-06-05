@@ -29,6 +29,6 @@ async def delete_games(game: Game, db: Session = Depends(get_db)):
     return game_state
 
 @router.put("/update")
-async def update_games(old_game: Game, new_game: Game, Session = Depends(get_db)):
+async def update_games(old_game: Game, new_game: Game, db: Session = Depends(get_db)):
     game_state =  update_game(db, old_game, new_game)
     return game_state
