@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from .routers import archetypes, games, moves, characters
 from .database.populate_database import populate_database
+from fastapi.middleware.cors import CORSMiddleware
 import logging
 
 # Setting up a logger to show database processes in the terminal.
@@ -8,6 +9,21 @@ logger = logging.getLogger("uvicorn.info")
 
 # Starting up FastApi.
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 # Populating the database with games loaded in populate_database.
 # If the database is already loaded this step is skipped.
