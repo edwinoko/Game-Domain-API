@@ -1,65 +1,45 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
-from app.database.setup import Base
-from sqlalchemy.orm import relationship
+from typing import Optional, List
+from datetime import datetime
+from sqlmodel import SQLModel, Field, Relationship
 
 
-class Game(Base):
-    __tablename__ = "game"
+class Game(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    title: str = Field(index=True, max_length=100)
+    release_date: Optional[datetime] = None
+    information: Optional[str] = None
 
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True, index=True)
-    release_date = Column(DateTime)
-    information = Column(String)
+class Archetype(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(index=True, max_length=100)
+    description: Optional[str] = None
 
-    character = relationship("Character", back_populates="games")
+class Character(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    game_id: Optional[int] = Field(default=None, foreign_key="game.id")
+    archetype_id: Optional[int] = Field(default=None, foreign_key="archetype.id")
+    name: str = Field(index=True, max_length=100)
+    release_date: Optional[datetime] = None
+    information: Optional[str] = None
 
-# TODO: Combination of game ID and name should be the unique constraint.
-
-class Character(Base):
-    __tablename__ = "character"
-
-    id = Column(Integer, primary_key=True, index=True)
-    game_id = Column(Integer, ForeignKey("game.id"))
-    archetype_id = Column(Integer, ForeignKey("archetype.id"))
-    name = Column(String)
-    release_date = Column(DateTime)
-    information = Column(String)
-
-    games = relationship("Game", back_populates="character")
-    archetypes = relationship("Archetype", back_populates="character")
-    moves = relationship("Move", back_populates="character")
-
-class Move(Base):
-    __tablename__ = "move"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    alias = Column(String)
-    startup_frames = Column(String)
-    landing_lag_frames = Column(String)
-    character_id = Column(Integer, ForeignKey("character.id"))
-    duration_frames = Column(String)
-    active_frame = Column(String)
-    end_active_frame = Column(String)
-    recovery_frames = Column(String)
-    start_invincibility_frame = Column(String)
-    end_invincibility_frame = Column(String)
-    gif_link = Column(String)
-    command_input = Column(String)
-    damage = Column(String)
-    notes = Column(String)
-    shield_lag = Column(String)
-    shield_stun = Column(String)
-    extra_information = Column(String)
-    cancellable = Column(String)
-
-    character = relationship("Character", back_populates="moves")
-
-class Archetype(Base):
-    __tablename__ = "archetype"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    description = Column(String)
-
-    character = relationship("Character", back_populates="archetypes")
+class Move(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(index=True, max_length=100)
+    alias: Optional[str] = None
+    startup_frames: Optional[str] = None
+    landing_lag_frames: Optional[str] = None
+    character_id: Optional[int] = Field(default=None, foreign_key="character.id")
+    duration_frames: Optional[str] = None
+    active_frame: Optional[str] = None
+    end_active_frame: Optional[str] = None
+    recovery_frames: Optional[str] = None
+    start_invincibility_frame: Optional[str] = None
+    end_invincibility_frame: Optional[str] = None
+    gif_link: Optional[str] = None
+    command_input: Optional[str] = None
+    damage: Optional[str] = None
+    notes: Optional[str] = None
+    shield_lag: Optional[str] = None
+    shield_stun: Optional[str] = None
+    extra_information: Optional[str] = None
+    cancellable: Optional[str] = None

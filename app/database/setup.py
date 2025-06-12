@@ -1,28 +1,33 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlmodel import create_engine, Session, SQLModel
+from sqlalchemy_utils import database_exists, create_database
+from ..crawlers.ssbu_crawler import get_data
 import os
 
-# Ensure that database files are created
+
+# Ensure that database folders are created
 database_directory = "data/"
 if not os.path.exists(database_directory):
     os.makedirs(database_directory)
 
-
-SQLALCHEMY_DATABASE_URL = "sqlite:///data/sql_app.db"
+# Database setup
+DATABASE_URL = "sqlite:///data/sql_app.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
-
+# Dependency to get the database session
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    x = database_exists(DATABASE_URL)
+    if database_exists(DATABASE_URL):
+        with Session(engine) as session:
+            yield session
+    else:
+        # If the database does not exist, create it and initialize it
+        create_database(DATABASE_URL)
+        SQLModel.metadata.create_all(engine)
+
+        # Add the character files to the environment
+        get_data()
+        with Session(engine) as session:
+            yield session
+
