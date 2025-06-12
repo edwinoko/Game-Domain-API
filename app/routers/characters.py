@@ -20,6 +20,7 @@ async def get_character(id: int, db: Session = Depends(get_db)):
 
 @router.post("/new")
 async def create_character(character: Character, db: Session = Depends(get_db)):
+    character.id = None  # Ensure id is not set, so DB will auto-increment
     db.add(character)
     db.commit()
     db.refresh(character)

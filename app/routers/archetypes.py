@@ -21,6 +21,7 @@ async def get_archetype(id: int, db: Session = Depends(get_db)):
 
 @router.post("/new")
 async def create_archetype(archetype: Archetype, db: Session = Depends(get_db)):
+    archetype.id = None  # Ensure id is not set, so DB will auto-increment
     db.add(archetype)
     db.commit()
     db.refresh(archetype)
